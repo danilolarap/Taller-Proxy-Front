@@ -24,7 +24,7 @@ export default function Dashboard() {
             cursor: loading ? 'not-allowed' : 'pointer'
           }}
         >
-          {loading ? 'Simulando...' : '⚡ Simular Carga'}
+          {loading ? 'Simulando...' : 'Simular Carga'}
         </button>
       </div>
 

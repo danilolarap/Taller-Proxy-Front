@@ -32,9 +32,9 @@ export default function RootLayout({
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <header style={headerStyles}>
             <div style={containerStyles}>
-              <h1 style={logoStyles}>Monitoring<span>Proxy</span></h1>
+              <h1 style={logoStyles}>Sistema de monitoreo de microservicios con Proxy de auditoría y logging</h1>
               <button onClick={toggleTheme} style={themeToggleStyles}>
-                {theme === 'light' ? '🌙 Modo Oscuro' : '☀️ Modo Claro'}
+                {theme === 'light' ? 'Modo Oscuro' : 'Modo Claro'}
               </button>
             </div>
           </header>
@@ -66,11 +66,9 @@ const containerStyles: React.CSSProperties = {
 };
 
 const logoStyles: React.CSSProperties = {
-  fontSize: '1.5rem',
+  fontSize: '1rem',
   color: 'var(--foreground)',
-  display: 'flex',
-  alignItems: 'center',
-  gap: '0.25rem',
+  fontWeight: 700,
 };
 
 const themeToggleStyles: React.CSSProperties = {

@@ -8,14 +8,14 @@ interface Props {
 }
 
 export default function LogTable({ logs }: Props) {
-  const [filterService, setFilterService] = useState('ALL');
-  const [filterStatus, setFilterStatus] = useState('ALL');
+  const [filterService, setFilterService] = useState('TODOS');
+  const [filterStatus, setFilterStatus] = useState('TODOS');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   // Filtrado de logs (Lógica filtrado dinámico)
   const filteredLogs = logs.filter(log => {
-    const matchService = filterService === 'ALL' || log.service === filterService;
-    const matchStatus = filterStatus === 'ALL' || log.status === filterStatus;
+    const matchService = filterService === 'TODOS' || log.service === filterService;
+    const matchStatus = filterStatus === 'TODOS' || log.status === filterStatus;
     return matchService && matchStatus;
   });
 
@@ -25,13 +25,13 @@ export default function LogTable({ logs }: Props) {
         <h3>Registros de Auditoría</h3>
         <div style={filterGroupStyles}>
           <select value={filterService} onChange={(e) => setFilterService(e.target.value)} style={selectStyles}>
-            <option value="ALL">Todos los Servicios</option>
-            <option value="Inventory">Inventario</option>
-            <option value="Orders">Pedidos</option>
-            <option value="Payments">Pagos</option>
+            <option value="TODOS">Todos los Servicios</option>
+            <option value="Inventario">Inventario</option>
+            <option value="Pedidos">Pedidos</option>
+            <option value="Pagos">Pagos</option>
           </select>
           <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)} style={selectStyles}>
-            <option value="ALL">Todos los Estados</option>
+            <option value="TODOS">Todos los Estados</option>
             <option value="SUCCESS">Éxito</option>
             <option value="ERROR">Error</option>
           </select>
@@ -77,7 +77,7 @@ export default function LogTable({ logs }: Props) {
                   <tr>
                     <td colSpan={5} style={detailStyles}>
                       <div style={detailContentStyles}>
-                        <p><strong>Timestamp:</strong> {new Date(log.timestamp).toLocaleString()}</p>
+                        <p><strong>Marca de tiempo:</strong> {new Date(log.timestamp).toLocaleString()}</p>
                         <p><strong>Parámetros:</strong> {JSON.stringify(log.params || {}, null, 2)}</p>
                         <p><strong>Respuesta:</strong> {JSON.stringify(log.response || {}, null, 2)}</p>
                       </div>
